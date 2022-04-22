@@ -24,11 +24,10 @@ At this point we do not plan to make this a dynamic database (i.e. link the data
 3. JavaScript
 
 #### **Server Side Programming Language**
-1. MongoDB
-2. React
-3. Node.js
-4. Express.js
-5. Postman 
+1. MS SQL Server
+2. Node.js
+3. Express.js
+4. Postman 
 
 #### **Web Application Framework**
 * React JS: React JS is a frontend library that is often used as a framework to build the component-based architecture of web apps
