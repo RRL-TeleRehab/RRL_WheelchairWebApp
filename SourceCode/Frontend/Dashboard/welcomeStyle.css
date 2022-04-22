@@ -1,0 +1,30 @@
+  .centerLogo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+  .EnterBtn {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight:  bold;
+  background-color: #00568b;
+  color: white;
+
+  padding: 12px 30px; /*ht and width*/
+  text-align: center;
+  text-decoration: none;
+      
+}
+
+.UofALogo {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  /* transform: translate(-50%, -50%); */
+}

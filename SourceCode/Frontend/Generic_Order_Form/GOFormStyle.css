@@ -1,0 +1,257 @@
+.clientInformationGrid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr );
+}
+
+legend{
+    background-color: lightgray;
+    padding: 3px;
+    margin:0 auto;
+    font-weight: bold;
+    text-align: center;
+    font:'Fira Sans', sans-serif;
+    width: 100%;
+}
+
+
+.clientNameLabel{
+    text-align: center;
+    background-color: lightgray;
+}
+.clientNameInput{
+    
+}
+
+.dobLabel{
+    text-align: center;
+    background-color: lightgray;
+}
+.dobInput{
+
+}
+
+.clientPhoneLabel{
+    text-align: center;
+    background-color: lightgray;
+}
+.clientPhoneInput{
+    
+}
+
+.dateLabel{
+    text-align: center;
+    background-color: lightgray;
+}
+.dateInput{
+    
+}
+.homeRadio{
+    margin-left: 40px;  
+    
+}
+
+.facilityRadio{
+    margin-left: 40px;
+}
+
+.homeCareOfficeRadio{
+    margin-left: 40px;
+}
+
+.seatingClinicRadio{
+    margin-left: 40px;
+}
+
+
+.authorizerAssessorInformationGrid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr );
+}
+
+.authorizerNameAndAuthLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.authorizerEmailLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.authorizerPhoneLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.assessorNameLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.assessorLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.assessorPhoneLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.internalTransferGrid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr );
+}
+
+.preferredMakeandModelGrid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr );
+}
+
+.catalogLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+
+.makeLabel{
+    text-align: center;
+    background-color: lightgray;    
+}
+
+.modelLabel{
+    text-align: center;
+    background-color: lightgray;    
+}
+
+.secondChoiceModelLabel{
+    text-align: center;
+    background-color: lightgray;    
+}
+
+.clientInformationblockone{
+    
+}
+
+.requiredFeaturesCastersTiresGrid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr );
+}
+.seatWidthLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.seatDepthLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.backHeightLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.seatToFloorHeightLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.wheelSizeLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.armRestsCircleLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.footrestDegreeLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.brakesLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.handRimsLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.casterSizeCircleLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.foodPlatesLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.foodRestsLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+.backCanesLabel{
+    text-align: center;
+    background-color: lightgray; 
+}
+h4 {
+    background-color: darkgray;
+    text-align: center;
+    padding: 0.5em;
+    font:'Fira Sans', sans-serif;
+}
+.clientMeasurementsGrid{
+            display: grid;
+            grid-template-columns: repeat(4,1fr );
+        }
+.optionsGrid{
+            display: grid;
+            grid-template-columns: repeat(4,1fr );
+        }
+
+legend {
+    font-weight:  bold;
+    padding: 3px;
+    margin:0 auto;
+    width:100%;
+    background-color:lightgray
+    
+}
+
+input.checkbox{
+        width: 23px;
+        height: 23px;
+      }
+
+
+
+#ProcessDataBtn {
+  position: relative;
+  left: 35%;
+    bottom:0%;
+/*  margin-top: 100%;*/
+/*  transform: translate(50%, 50%);*/
+  font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight:  bold;
+  background-color: #00568b;
+  color: white;
+
+  padding: 12px 30px; /*ht and width*/
+  text-align: center;
+  text-decoration: none;
+    
+}
+
+
+#PrintPageBtn {
+  position: relative;
+  left: 35%;
+    bottom:0%;
+/*  margin-top: 100%;*/
+/*  transform: translate(50%, 50%);*/
+  font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight:  bold;
+  background-color: #00568b;
+  color: white;
+
+  padding: 12px 30px; /*ht and width*/
+  text-align: center;
+  text-decoration: none;     
+}
+
+@media print {
+/*    body {transform: scale(.85);}*/
+    body {overflow:visible;}
+    table {page-break-inside: avoid;}
+    @page {size: landscape}
+}

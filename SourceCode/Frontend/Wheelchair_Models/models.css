@@ -1,0 +1,75 @@
+/* Style for the Expand Collapse feature */
+.collapsible {
+  /* background-color: #777; */
+  background-color: #00568b;
+  color: white;
+  cursor: pointer;
+  padding: 30px;
+  width: 100%;
+  border: 1px solid teal;
+  text-align: left;
+  outline: none;
+  font-size: 13pt;
+  font-family: sans-serif;
+  font-weight: bold;
+
+}
+
+.collapsible:hover {
+  background-color: teal;
+}
+
+.active {
+  background-color: #00568b;
+}
+
+
+.collapsible:after {
+  content: '\002B';
+  /* color: white; */
+  color: black;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  /* padding: 0 18px; */
+  padding: 0 30px;
+  max-height: 0;
+  overflow: hidden;
+  overflow-wrap: "break-word";
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+
+/* Print Button */
+#PrintPageBtn {
+  position: relative;
+  left: 45%;
+    bottom:0%;
+/*  margin-top: 100%;*/
+/*  transform: translate(50%, 50%);*/
+  font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight:  bold;
+  background-color: #00568b;
+  color: white;
+
+  padding: 12px 30px; /*ht and width*/
+  text-align: center;
+  text-decoration: none;  
+  margin-top:40px;  
+}
+
+@media print {
+/*    body {transform: scale(.85);}*/
+    body {overflow:visible;}
+    table {page-break-inside: avoid;}
+    @page {size: landscape}
+}

@@ -1,0 +1,15 @@
+#MessageDialog {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight:  bold;
+  color: #00568b;
+
+  padding: 12px 30px; /*ht and width*/
+  text-align: center;
+  text-decoration: none;
+      
+}

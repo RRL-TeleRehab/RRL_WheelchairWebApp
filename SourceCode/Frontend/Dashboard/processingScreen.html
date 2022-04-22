@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title> Loading....</title>
+    <link rel="stylesheet" href="processingStyle.css">
+    </head>
+    <body>  
+        <script type="text/javascript" src="../Javascript_Files/functions.js"></script>
+        <script type="text/javascript">
+            
+            var pageTypeVal = JSON.parse( localStorage.getItem('pageType') );
+            //Check Whether the next Page should be GFO or Wheelchair model and then load the page after 3 seconds
+            if(pageTypeVal === "CSA")
+                setTimeout(function(){window.location.href = "../Generic_Order_Form/GOForm.html";}, 3000);
+            else if(pageTypeVal === "GFO")
+                // setTimeout(function(){window.location.href = "../Wheelchair_Models/wheelchair.html";}, 3000);
+                setTimeout(function(){window.location.href = "../Wheelchair_Models/models.html";}, 3000);
+            else
+                setTimeout(function(){window.location.href = "../Generic_Order_Form/GOForm.html";}, 3000);
+            
+            console.log("PageType is :" + pageTypeVal);
+
+        </script>
+
+    
+        <div class="loader"></div>
+        <label class="loaderLbl">Please Wait...Processing the information. Please DO NOT Press Refresh or Back Button.</label>
+  </body>
+</html>
+

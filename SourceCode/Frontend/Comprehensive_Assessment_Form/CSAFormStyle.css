@@ -1,0 +1,182 @@
+body{
+/*    margin:20px 40px 20px 0px;*/
+/*    overflow:visible;*/
+}
+hr{
+    border:solid;
+    width: 100%;
+    border-bottom: none;
+    color: gray;
+    
+}
+
+/* Header Section */
+.top-right-info{
+    color:gray;
+    margin-top:20px;
+}
+.ComprehensiveformfirstGrid{
+    display:grid;
+    grid-template-columns: repeat(3,1fr );
+    
+}
+.clientsHomeAdressGrid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr );
+    margin: 20px auto auto auto;
+}
+#compnameinput{
+    margin-left: 25px;
+}
+#compbirthdateinput{
+    margin-left: 4px;
+}
+#compgenderinput{
+    margin-left: 17px;
+}
+#compphninput{
+    margin-left: 31px;
+}
+/* Functional Propulsion */
+.functionalPropGrid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr );
+}
+.functional-prop-class{
+/*    background-color: lightgray;*/
+}
+#functionalProp-label{
+    font-weight: bold;
+}
+
+/* Client goal is power mobility */
+
+.client-goal-power-label{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+/* Client goal is foot propulsion */
+
+.clientGoalGrid2{
+    display: grid;
+    grid-template-columns: repeat(6,1fr );
+}
+.client-goal-foot-label{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.client-goal-arm-label{
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.client-column-first{
+    width: 400px;
+}
+.client-column-second{
+    width:100px;
+    text-align: center;
+}
+.client-column-third{
+    width:100px;
+    text-align: center;
+}
+.client-column-fourth{
+    width: 400px;
+}
+.client-column-fifth{
+    width:100px;
+    text-align: center;
+}
+.client-column-sixth{
+    width:100px;
+    text-align: center;
+}
+/* Comments section for Functional propulsion */
+#comment-section-func-prop{
+    font-weight: bold;
+}
+#comment-input-func-prop{
+    width:100%;
+    height: 50px;
+}
+
+/* Images */
+.measurement-images-Grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr );
+}
+.img-one{
+    margin-left: 100px;
+}
+.img-two{
+    margin-left: 100px;
+}
+.img-three{
+    margin-left: 100px;
+}
+.img-fourth{
+    margin-right: 300px;
+}
+
+/* Client Measurements in Inches */
+.client-measuremnets-title{
+    font-weight: bold;
+    margin-right: 5px;
+}
+.colsdiv{
+    display: grid;
+    grid-template-columns: repeat(2,1fr );
+    
+}
+
+
+input.checkbox{
+        width: 23px;
+        height: 23px;
+      }
+
+#GotoGOFBtn {
+  position: relative;
+  left: 35%;
+    bottom:0%;
+/*  margin-top: 100%;*/
+/*  transform: translate(50%, 50%);*/
+  font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight:  bold;
+  background-color: #00568b;
+  color: white;
+
+  padding: 12px 30px; /*ht and width*/
+  text-align: center;
+  text-decoration: none;
+  
+      
+}
+
+#PrintPageBtn {
+  position: relative;
+  left: 35%;
+    bottom:0%;
+/*  margin-top: 100%;*/
+/*  transform: translate(50%, 50%);*/
+  font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight:  bold;
+  background-color: #00568b;
+  color: white;
+
+  padding: 12px 30px; /*ht and width*/
+  text-align: center;
+  text-decoration: none;     
+}
+
+@media print {
+/*    body {transform: scale(.85);}*/
+    body {overflow:visible;}
+    table {page-break-inside: avoid;}
+    @page {size: landscape}
+}
