@@ -6,19 +6,21 @@ async function getWheelchairs() {
     try {
         let pool = await sql.connect(config);
         let products = await pool.request().query("SELECT Model from WC_specs where Weight>"+variables.weight+"AND Seat_Width_Min <="+variables.swidth+"AND Seat_Width_Max >= "+variables.swidth+"AND Seat_Depth_Min <="+variables.sdepth+"AND Seat_Depth_Max >= "+variables.sdepth);
-        // let products = await pool.request().query("SELECT Model from WC_specs");
         return products.recordsets;
+        // return products.output["Model"];
     }
     catch (error) {
         console.log(error);
     }
 }
 
-async function showWheelchairs(weight, width, depth) {
+async function showWheelchairs(weight, width, depth, tilt) {
     try {
         let pool = await sql.connect(config);
-        let products = await pool.request().query("SELECT Model from WC_specs where Weight>"+weight+"AND Seat_Width_Min <="+width+"AND Seat_Width_Max >= "+width+"AND Seat_Depth_Min <="+depth+"AND Seat_Depth_Max >= "+depth);
+        console.log(tilt);
+        let products = await pool.request().query("SELECT Model from WC_specs where Weight>"+weight+"AND Seat_Width_Min <="+width+"AND Seat_Width_Max >= "+width+"AND Seat_Depth_Min <="+depth+"AND Seat_Depth_Max >= "+depth+"AND Tilt =" + "'"+tilt+"'");
         return products.recordsets;
+
     }
     catch (error) {
         console.log(error);
