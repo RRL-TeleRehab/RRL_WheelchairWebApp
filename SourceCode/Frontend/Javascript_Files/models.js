@@ -18,6 +18,8 @@ function getWheelchairModels(containerDiv){
   //Read the data from Generic Order Form fields and pass that to the Getchairs API
   var updatedGofData = JSON.parse( localStorage.getItem('updatedGofData') );
   var params = JSON.stringify(updatedGofData);
+
+  var CSAFormData = JSON.parse( localStorage.getItem('CSAFormData') );
  
   //Sending Generic Form Data to GetChairs API
   var xhr = new XMLHttpRequest();
@@ -37,7 +39,6 @@ function getWheelchairModels(containerDiv){
         for ( var index = 0; index <= getChairsResponse.length;index++ )
         {
           var model = getChairsResponse[0][index].Model;
-          var CSAFormData = JSON.parse( localStorage.getItem('CSAFormData') );
 
           // alert("getChairsResponse " + model  + "\n" ); 
           const modelButton = document.createElement("button");
@@ -191,7 +192,7 @@ function getWheelchairModels(containerDiv){
         row1data2.setAttribute("class", "content");
         var row1data2Id = "row1data1"+"_"+index;
         row1data2.setAttribute("id", row1data2Id);
-        row1data2.innerHTML = CSAFormData[0].Tilt; 
+        row1data2.innerHTML = CSAFormData[0].tilt; 
         document.getElementById(row1Id).appendChild(row1data2);
 
         //Row 2
