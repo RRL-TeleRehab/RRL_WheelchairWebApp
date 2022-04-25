@@ -28,130 +28,126 @@ function getWheelchairModels(containerDiv){
   xhr.onreadystatechange = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         // Request finished. Do processing here.
-        var getChairsResponse = xhr.responseText;
-        alert("getChairsResponse " + getChairsResponse + " " + getChairsResponse.length);   
+        // var getChairsResponse = xhr.responseText;//Returns the response as a string but we need Object
+
+        // var getChairsResponse = xhr.response;
+        // alert("getChairsResponse " + getChairsResponse + " " + getChairsResponse.length);   
        
-    }
-  }
-  xhr.send(params);
-
-  /*Uncomment the code below to show the Models on UI
-    var persons = JSON.parse(xmlhttp.responseText);  
-      for (index = 0; index < persons.length; index++){
-        const modelButton = document.createElement("button");
-        modelButton.setAttribute("class", "collapsible");
-        var buttonId = "btnId"+"_"+index;
-        modelButton.setAttribute("id", buttonId);
-        modelButton.innerHTML = persons[index].Model; 
-        document.getElementById("containerDiv").appendChild(modelButton);
-
-        const modelDiv = document.createElement("div");
-        modelDiv.setAttribute("class", "content");
-        var modelDivId = "modelDivId"+"_"+index;
-        modelDiv.setAttribute("id", modelDivId);
-        // modelDiv.style.width = '100%';
-        //modelDiv.innerHTML = modelDivId + "aaaaaaaaaaaaaaaaa11111111111bbbbbbbbbbbbbbbbbb333333333333333333333cccccccccccccccccccccccccccccccc88888888888888888888888888888888888888jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj77777777777777777xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0000000000000000qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqllllllllllllllllllllllllllllll"; 
-        // document.getElementById(buttonId).appendChild(modelDiv);
-        document.getElementById("containerDiv").appendChild(modelDiv);
-
-
-         var iframe = document.createElement('iframe');
-         var iframeId = "iframeId"+"_"+buttonId;
-         iframe.setAttribute("id", iframeId);
-         iframe.type = "file";
-         modelDiv.appendChild(iframe);
-        // iframe.style.display = "none";
-        // iframe.setAttribute("class", "content");
-        // <div><img src="Images/Logo.PNG" ></div>
-        // iframe.src = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmxEr_lsL1V8zYTk_tqfeWy_ZseT7WOwRq8faftMyBWfOMX734IL--WHJOu9uqOg/pubhtml?widget=true&amp;headers=false";
-        var wheelSizeImgPath = "";
-        var modelName = persons[index].Model;
-
-        //Display the appropriate Wheel Size table Image based on Model Name
-        if(modelName.includes("Move"))
+        var getChairsResponse = JSON.parse(xhr.response);
+        for ( var index = 0; index <= getChairsResponse.length;index++ )
         {
-          iframe.setAttribute("class", "MoveClass");
-          var _button = document.createElement("button");
-          _button.innerHTML = 'Move-Front';
-          // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Front.PNG";
-          wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveFrontTbl.html";
-          document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
-          _button.onclick = function()
+          var model = getChairsResponse[0][index].Model;
+          var CSAFormData = JSON.parse( localStorage.getItem('CSAFormData') );
+
+          // alert("getChairsResponse " + model  + "\n" ); 
+          const modelButton = document.createElement("button");
+          modelButton.setAttribute("class", "collapsible");
+          var buttonId = "btnId"+"_"+index;
+          modelButton.setAttribute("id", buttonId);
+          modelButton.innerHTML = model; 
+          document.getElementById("containerDiv").appendChild(modelButton);
+
+          const modelDiv = document.createElement("div");
+          modelDiv.setAttribute("class", "content");
+          var modelDivId = "modelDivId"+"_"+index;
+          modelDiv.setAttribute("id", modelDivId);
+          document.getElementById("containerDiv").appendChild(modelDiv);
+
+          var iframe = document.createElement('iframe');
+          var iframeId = "iframeId"+"_"+buttonId;
+          iframe.setAttribute("id", iframeId);
+          iframe.type = "file";
+          modelDiv.appendChild(iframe);
+          // iframe.style.display = "none";
+          // iframe.setAttribute("class", "content");
+          // <div><img src="Images/Logo.PNG" ></div>
+          // iframe.src = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmxEr_lsL1V8zYTk_tqfeWy_ZseT7WOwRq8faftMyBWfOMX734IL--WHJOu9uqOg/pubhtml?widget=true&amp;headers=false";
+          var wheelSizeImgPath = "";
+          var modelName = model;
+
+          //Display the appropriate Wheel Size table Image based on Model Name
+          if(modelName.includes("Move"))
           {
-              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Front.PNG";
-              wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveFrontTbl.html";
-             document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
-          }
-          var _button2 = document.createElement("button");
-          _button2.innerHTML = 'Move-Rear';
-          _button2.onclick = function()
-          {
-              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Rear.PNG";
-              wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveRearTbl.html";
+            iframe.setAttribute("class", "MoveClass");
+            var _button = document.createElement("button");
+            _button.innerHTML = 'Move-Front';
+            // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Front.PNG";
+            wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveFrontTbl.html";
+            document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
+            _button.onclick = function()
+            {
+                // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Front.PNG";
+                wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveFrontTbl.html";
               document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
+            }
+            var _button2 = document.createElement("button");
+            _button2.innerHTML = 'Move-Rear';
+            _button2.onclick = function()
+            {
+                // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Rear.PNG";
+                wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveRearTbl.html";
+                document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
+            }
+
+            modelDiv.appendChild(_button);
+            modelDiv.appendChild(_button2);
+
           }
-
-          modelDiv.appendChild(_button);
-          modelDiv.appendChild(_button2);
-
-        }
-         if(modelName.includes("Orion"))
-        {
-          iframe.setAttribute("class", "OrionClass");
-          // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/OnionII.PNG";
-          wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/Orion2Tbl.html";
-          document.getElementsByClassName("OrionClass")[0].src = wheelSizeImgPath;
-
-        }
-         if(modelName.includes("Catalyst"))
-        {
-          iframe.setAttribute("class", "CatalystClass");
-          // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/M6Quickie.PNG";
-          wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/M6QuickieTbl.html";
-
-          document.getElementsByClassName("CatalystClass")[0].src = wheelSizeImgPath;
-
-        }
-        if(modelName.includes("MLW"))
-        {
-          //SuperTilt is MapleLeaf(MLW)
-          iframe.setAttribute("class", "MLWClass");
-          // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/SuperTilt.PNG";
-          wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/SuperTiltTbl.html";
-         document.getElementsByClassName("MLWClass")[0].src = wheelSizeImgPath;
-
-         var _button = document.createElement("button");
-          _button.innerHTML = 'SuperTilt';
-         
-          _button.onclick = function()
+          if(modelName.includes("Orion"))
           {
+            iframe.setAttribute("class", "OrionClass");
+            // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/OnionII.PNG";
+            wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/Orion2Tbl.html";
+            document.getElementsByClassName("OrionClass")[0].src = wheelSizeImgPath;
+
+          }
+          if(modelName.includes("Catalyst"))
+          {
+            iframe.setAttribute("class", "CatalystClass");
+            // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/M6Quickie.PNG";
+            wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/M6QuickieTbl.html";
+            document.getElementsByClassName("CatalystClass")[0].src = wheelSizeImgPath;
+
+          }
+          if(modelName.includes("MLW"))
+          {
+            //SuperTilt is MapleLeaf(MLW)
+            iframe.setAttribute("class", "MLWClass");
             // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/SuperTilt.PNG";
             wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/SuperTiltTbl.html";
             document.getElementsByClassName("MLWClass")[0].src = wheelSizeImgPath;
-          }
-          var _button2 = document.createElement("button");
-          _button2.innerHTML = 'LowRiderSuperTilt';
-          _button2.onclick = function()
-          {
-              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/LowRiderSuperTilt.PNG";
-              wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/LowRideSuperTiltTbl.html";
+
+          var _button = document.createElement("button");
+            _button.innerHTML = 'SuperTilt';
+          
+            _button.onclick = function()
+            {
+              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/SuperTilt.PNG";
+              wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/SuperTiltTbl.html";
               document.getElementsByClassName("MLWClass")[0].src = wheelSizeImgPath;
+            }
+            var _button2 = document.createElement("button");
+            _button2.innerHTML = 'LowRiderSuperTilt';
+            _button2.onclick = function()
+            {
+                // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/LowRiderSuperTilt.PNG";
+                wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/LowRideSuperTiltTbl.html";
+                document.getElementsByClassName("MLWClass")[0].src = wheelSizeImgPath;
+            }
+
+            modelDiv.appendChild(_button);
+            modelDiv.appendChild(_button2);
           }
 
-          modelDiv.appendChild(_button);
-          modelDiv.appendChild(_button2);
-
-        }
-
-        // document.getElementById(iframeId).src = wheelSizeImgPath;
-        // iframe.style.height = "600px";//iframe.contentWindow.document.getElementById(modelDivId).scrollHeight + 'px';
-        // iframe.style.width = "600px";
-        iframe.style.width = '100%';
-        var scrollHeight = iframe.ownerDocument.body.scrollHeight;
-        iframe.style.height = scrollHeight + "px";
-       
-        var br = document.createElement("br");
-        modelDiv.appendChild(br);
+          // document.getElementById(iframeId).src = wheelSizeImgPath;
+          // iframe.style.height = "600px";//iframe.contentWindow.document.getElementById(modelDivId).scrollHeight + 'px';
+          // iframe.style.width = "600px";
+          iframe.style.width = '100%';
+          var scrollHeight = iframe.ownerDocument.body.scrollHeight;
+          iframe.style.height = scrollHeight + "px";
+        
+          var br = document.createElement("br");
+          modelDiv.appendChild(br);
 
         //<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTmxEr_lsL1V8zYTk_tqfeWy_ZseT7WOwRq8faftMyBWfOMX734IL--WHJOu9uqOg/pubhtml?widget=true&amp;headers=false"></iframe>
         
@@ -195,7 +191,7 @@ function getWheelchairModels(containerDiv){
         row1data2.setAttribute("class", "content");
         var row1data2Id = "row1data1"+"_"+index;
         row1data2.setAttribute("id", row1data2Id);
-        row1data2.innerHTML = persons[index].Tilt; 
+        row1data2.innerHTML = CSAFormData[0].Tilt; 
         document.getElementById(row1Id).appendChild(row1data2);
 
         //Row 2
@@ -208,15 +204,15 @@ function getWheelchairModels(containerDiv){
         const row2data1 = document.createElement("TD");
         row2data1.setAttribute("class", "content");
         var row2data1Id = "row2data1"+"_"+index;
-        row2data1.setAttribute("id", row1data1Id);
-        row2data1.innerHTML = "Seat Width Min"; 
+        row2data1.setAttribute("id", row2data1Id);
+        row2data1.innerHTML = "Seat Width"; 
         document.getElementById(row2Id).appendChild(row2data1);
 
         const row2data2 = document.createElement("TD");
         row2data2.setAttribute("class", "content");
         var row2data2Id = "row2data2"+"_"+index;
         row2data2.setAttribute("id", row2data2Id);
-        row2data2.innerHTML = persons[index].Seat_Width_Min; 
+        row2data2.innerHTML = updatedGofData.SeatWidth; 
         document.getElementById(row2Id).appendChild(row2data2);
 
         //Row 3
@@ -230,14 +226,14 @@ function getWheelchairModels(containerDiv){
         row3data1.setAttribute("class", "content");
         var row3data1Id = "row3data1"+"_"+index;
         row3data1.setAttribute("id", row3data1Id);
-        row3data1.innerHTML = "Seat Width Max"; 
+        row3data1.innerHTML = "Seat Depth"; 
         document.getElementById(row3Id).appendChild(row3data1);
 
         const row3data2 = document.createElement("TD");
         row3data2.setAttribute("class", "content");
         var row3data2Id = "row3data2"+"_"+index;
         row3data2.setAttribute("id", row3data2Id);
-        row3data2.innerHTML = persons[index].Seat_Width_Max; 
+        row3data2.innerHTML = updatedGofData.SeatDepth; 
         document.getElementById(row3Id).appendChild(row3data2);
 
 
@@ -252,14 +248,14 @@ function getWheelchairModels(containerDiv){
         row4data1.setAttribute("class", "content");
         var row4data1Id = "row4data1"+"_"+index;
         row4data1.setAttribute("id", row4data1Id);
-        row4data1.innerHTML = "Seat Depth Min"; 
+        row4data1.innerHTML = "Recommended FSFH"; 
         document.getElementById(row4Id).appendChild(row4data1);
 
         const row4data2 = document.createElement("TD");
         row4data2.setAttribute("class", "content");
         var row4data2Id = "row4data2"+"_"+index;
         row4data2.setAttribute("id", row4data2Id);
-        row4data2.innerHTML = persons[index].Seat_Depth_Min; 
+        row4data2.innerHTML = updatedGofData.RecommendedFSFH; 
         document.getElementById(row4Id).appendChild(row4data2);
 
 
@@ -274,14 +270,14 @@ function getWheelchairModels(containerDiv){
         row5data1.setAttribute("class", "content");
         var row5data1Id = "row5data1"+"_"+index;
         row5data1.setAttribute("id", row5data1Id);
-        row5data1.innerHTML = "Seat Depth Max"; 
+        row5data1.innerHTML = "Client Weight"; 
         document.getElementById(row5Id).appendChild(row5data1);
 
         const row5data2 = document.createElement("TD");
         row5data2.setAttribute("class", "content");
         var row5data2Id = "row5data2"+"_"+index;
         row5data2.setAttribute("id", row5data2Id);
-        row5data2.innerHTML = persons[index].Seat_Depth_Max; 
+        row5data2.innerHTML = updatedGofData.Weight; 
         document.getElementById(row5Id).appendChild(row5data2);
 
         //Row 6
@@ -302,13 +298,11 @@ function getWheelchairModels(containerDiv){
         row6data2.setAttribute("class", "content");
         var row6data2Id = "row6data2"+"_"+index;
         row6data2.setAttribute("id", row6data2Id);
-        // row6data2.innerHTML = persons[index].Seat_Depth_Max; 
         document.getElementById(row6Id).appendChild(row6data2);
 
         var row6data2Input = document.createElement('input');
         row6data2Input.type = 'text';
         row6data2Input.id = 'row6data2Input' + index; // need unique Ids!
-        //row6data2Input.value = persons[index].Seat_Depth_Max; 
         row6data2.appendChild(row6data2Input);
 
         //Row 7
@@ -329,13 +323,11 @@ function getWheelchairModels(containerDiv){
         row7data2.setAttribute("class", "content");
         var row7data2Id = "row7data2"+"_"+index;
         row7data2.setAttribute("id", row7data2Id);
-        // row7data2.innerHTML = persons[index].Seat_Depth_Max; 
         document.getElementById(row7Id).appendChild(row7data2);
 
         var row7data2Input = document.createElement('input');
         row7data2Input.type = 'text';
         row7data2Input.id = 'row7data2Input' + index; // need unique Ids!
-        //row7data2Input.value = persons[index].Seat_Depth_Max; 
         row7data2.appendChild(row7data2Input);
 
         //Row 8
@@ -356,38 +348,32 @@ function getWheelchairModels(containerDiv){
         row8data2.setAttribute("class", "content");
         var row8data2Id = "row8data2"+"_"+index;
         row8data2.setAttribute("id", row8data2Id);
-        // row7data2.innerHTML = persons[index].Seat_Depth_Max; 
         document.getElementById(row8Id).appendChild(row8data2);
 
         var row8data2Input = document.createElement('input');
         row8data2Input.type = 'text';
         row8data2Input.id = 'row8data2Input' + index; // need unique Ids!
-        row8data2Input.value = persons[index].Seat_Depth_Max; 
         row8data2.appendChild(row8data2Input);
         
-      
+  }// End of For Loop
+  //Function for expand Collapse feature
+  for (n = 0; n < coll.length; n++) {
+    coll[n].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      // alert("content.style.maxHeight" + content.style.maxHeight);
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+        // alert("content.style.maxHeight" + content.style.maxHeight);
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        // alert("content.scrollHeight" + content.scrollHeight);
+        } 
+    });
   }
+    
+}//End of ReadyState condition
+}//End of OnReadystateChange
+xhr.send(params);
 
-
-
-        //Function for expand Collapse feature
-        for (n = 0; n < coll.length; n++) {
-          coll[n].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            // alert("content.style.maxHeight" + content.style.maxHeight);
-
-            if (content.style.maxHeight){
-              content.style.maxHeight = null;
-              // alert("content.style.maxHeight" + content.style.maxHeight);
-            } else {
-              content.style.maxHeight = content.scrollHeight + "px";
-              // alert("content.scrollHeight" + content.scrollHeight);
-
-            } 
-          });
-        }
-};
-xmlhttp.send(); */
-
-}
+}//End of function
