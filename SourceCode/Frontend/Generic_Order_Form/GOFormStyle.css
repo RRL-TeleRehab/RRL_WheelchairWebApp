@@ -213,6 +213,23 @@ input.checkbox{
 
 
 
+#SaveGOFDataBtn {
+    position: relative;
+    left: 35%;
+    bottom:0%;
+    /*  margin-top: 100%;*/
+    /*  transform: translate(50%, 50%);*/
+    font-family: Source Sans Pro, Calibri, Arial, sans-serif;
+    font-size: 13pt;
+    font-weight:  bold;
+    background-color: #00568b;
+    color: white;
+
+    padding: 12px 30px; /*ht and width*/
+    text-align: center;
+    text-decoration: none;
+}
+
 #ProcessDataBtn {
   position: relative;
   left: 35%;

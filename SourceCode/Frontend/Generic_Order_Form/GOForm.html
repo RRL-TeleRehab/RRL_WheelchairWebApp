@@ -7,189 +7,25 @@
     <link rel="stylesheet" href="GOFormStyle.css">
     <script type="text/javascript" src="../Javascript_Files/functions.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <header>
+        <h3>The following information has been taken from the Comprehensive Seating Assessment (CSA) form and you are allowed to make the manual adjustments based on your clinical judgements and
+            priorities for the use environment of your client.</h3>
+      </header>
     </head>
     <body onload="retrieveFormInfo()">  
-         <form>
-    <fieldset>
-            <legend>Client Information</legend>
-            <!-- Client Information Section -->
-                <div class=clientInformationGrid>
-                    
-                    <!--First row-->
-
-                    <!--First row - column 1-->
-                        <div>
-                            <label class="clientNameLabel" for="scales">Client Name</label>
-                            <br>
-                            <input class="clientNameInput" type="text" id="clientNameInput" name="scales" >
-                            
-                        </div>
-
-                    <!--First row - column 2-->
-                        <div>
-                            <label class="dobLabel" for="scales">Date of Birth</label>
-                            <br>
-                            <input class="dobInput" type="text" id="scales" name="scales" >
-                        </div>
-
-                    <!--First row - column 3-->
-                        <div>
-                            <label class="clientPhoneLabel" for="scales">Client PHN</label>
-                            <br>
-                            <input class="clientPhoneInput" type="text" id="scales" name="scales" >
-                        </div>
-
-                    <!--First row - column 4-->
-                        <div>
-                            <label class="dateLabel" for="scales">Date</label>
-                                <br>
-                            <input class="dateInput" type="text" id="scales" name="scales" >
-                        </div>
-                </div>
-                <br>
-                <div>
-                    <!-- Delivered to (circle) part2 -->
-
-                        <!--Second row -->
-                             <label class="dtcLabel" for="scales">Delivered to (circle):</label>
-
-                        <!-- Radio Buttons -->
-
-                        <!--Second row - column 1-->
-                            <input class="homeRadio" type="radio" id="scales" name="scales" >
-                            <label class="homeLabel" for="scales">home</label>
-
-                        <!--Second row - column 2-->
-                            <input class="facilityRadio" type="radio" id="scales" name="scales" >
-                            <label class="facilityLabel" for="scales">facility</label>
-
-                        <!--Second row - column 3-->
-                            <input class="homeCareOfficeRadio" type="radio" id="scales" name="scales" >
-                            <label class="homeCareOfficeLabel" for="scales">home care office</label>
-
-                        <!--Second row - column 4-->
-                            <input class="seatingClinicRadio" type="radio" id="scales" name="scales" >
-                            <label class="seatingClinicLabel" for="scales">seating clinic</label>
-                </div>
-                <br>
-                <div>
-                     <!-- Delivery Address part3 -->
-
-                        <!--Third row -->
-
-                        <!--Third row - column 1-->
-                        <label class="deliveryAddressLabel" for="scales">Delivery Address</label>
-                        <input class="deliveryAddressInput" type="text" id="scales" name="scales" >
-
-                </div>
-    </fieldset>
-                <br>
-    <fieldset>
-            <legend>Authorizer/ assessor Information</legend>
-            <!-- Authorizer/ assessor Information -->
-                <div class="authorizerAssessorInformationGrid">    
-                    
-                    <!--First row-->
-                    
-                    <!-- First row column 1 -->
-                        <div>
-                            <label class="authorizerNameAndAuthLabel" for="scales">Authorizer Name and Auth #</label>
-                            <br>
-                            <input class="authorizerNameAndAuthInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- First row column 2 -->
-                        <div>
-                            <label class="authorizerEmailLabel" for="scales">Email</label>
-                            <br>
-                            <input class="authorizerEmailInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- First row column 3 -->
-                        <div>
-                            <label class="authorizerPhoneLabel" for="scales">best phone number </label>
-                            <br>
-                            <input class="authorizerPhoneInput" type="text" id="scales" name="scales" >
-                        </div>
-                        <br><br><br>
-                    
-                    
-                    <!--Assessor Information-->
-                    
-                    <!--Second row-->
-                    
-                    <!-- Second row column 1 -->
-                        <div>
-                            <label class="assessorNameLabel" for="scales">Assessor Name (if applicable)</label>
-                            <br>
-                            <input class="assessorNameInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- Second row column 2 -->
-                        <div>
-                            <label class="assessorLabel" for="scales">Email</label>
-                            <br>
-                            <input class="assessorInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- Second row column 3 -->
-                        <div>
-                            <label class="assessorPhoneLabel" for="scales">best phone number </label>
-                            <br>
-                            <input class="assessorPhoneInput" type="text" id="scales" name="scales" >
-                        </div>                
-                </div>
-    </fieldset>
-                <br>
-    <fieldset>
-            <legend>Internal transfer</legend>
-            <!-- Internal Tranfer -->
-                <div class="internalTransferGrid">
-                    
-                    <!-- First row column 1 -->
-                        <div>
-                            <input class="internalTransferCheck" type="checkbox" id="scales" name="scales" >
-                            <label class="internalTransferLabel" for="scales">internal transfer</label>
-                        </div>    
-                    <!-- First row column 2 -->
-                        <div>
-                            <label class="snLabel" for="scales">s/n</label>
-                            <input class="snInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- First row column 3 -->
-                        <div>
-                            <label class="fillMakeandModelLabel" for="scales">(+fill out make and model only)</label>
-                        </div>
-                </div>
-    </fieldset>
-                <br>
+    <form>
     <fieldset>
             <legend>preferred make and model (fill in)</legend>
             <!-- preferred make and model (fill in) -->
                 <div class="preferredMakeandModelGrid">
                     
-                    <!--First row-->
-                    
-                    <!-- First row column 1 -->
-                        <div>
-                            <label class="catalogLabel" for="scales">Catalog #</label>
-                            <br>
-                            <input class="catalogInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- First row column 2 -->
-                        <div>
-                            <label class="makeLabel" for="scales">Make</label>
-                            <br>
-                            <input class="makeInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- First row column 3 -->
-                        <div>
-                            <label class="modelLabel" for="scales">Model</label>
-                            <br>
-                            <input class="modelInput" type="text" id="scales" name="scales" >
-                        </div>
-                    <!-- First row column 4 -->
-                        <div>
-                            <label class="secondChoiceModelLabel" for="scales">Second choice model</label>
-                            <br>
-                            <input class="secondChoiceModelInput" type="text" id="scales" name="scales" >
-                        </div>
+                    <div>
+                        <label class="makeLabel" for="scales">Preferred Make</label>
+                        <br>
+                        <input class="makeInput" type="text" id="scales" name="scales" >
+                    </div>
+                 
                 </div>
     </fieldset>
                 <br>
@@ -199,7 +35,11 @@
                 <div class="requiredFeaturesCastersTiresGrid">
                 
                     <!--First row-->
-                    
+                        <div>
+                <label for="scales">client weight</label>
+                    <br>
+                    <input type="text" id="GOF_patientWeightInput" name="weight">
+                </div>
                     <!--First row - column 1-->
                         <div>
                             <label class="seatWidthLabel" for="scales">seat width (inches) #</label>
@@ -214,363 +54,46 @@
                         </div>
                 
                     <!--First row - column 3-->
-                        <div>
+                        <!-- <div>
                             <label class="backHeightLabel" for="scales">back height (inches)</label>
                             <br>
                             <input type="text" id="backHeightInput"  >
+                        </div> -->
+                        <div>
+                            <label class="RFSFHtLabel" for="scales">Recommended FSFH</label>
+                            <br>
+                            <input type="text" id="RFSFHInput"  >
                         </div>
                 
                     <!--First row - column 4-->
-                        <div>
+                        <!-- <div>
                             <label class="seatToFloorHeightLabel" for="scales">seat to floor height (In)</label>
                             <br>
                             <input type="text" id="seatToFloorHeightInput"  >
-                        </div>
-            
-                    <!--second row-->
-                
-                    <!--second row - column 1-->
-                        <div>
-                            <br>
-                            <label class="wheelSizeLabel" for="scales">Wheel size (inches)</label>
-                            <br>
-                            <input class="wheelSizeRadio1" type="radio" id="scales" name="scales" >
-                            <label class="wheelSizeLabel1" for="scales">20"</label>
-
-                            <input class="wheelSizeRadio2" type="radio" id="scales" name="scales" >
-                            <label class="wheelSizeLabel2" for="scales">22"</label>
-
-                            <input class="wheelSizeRadio3" type="radio" id="scales" name="scales" >
-                            <label class="wheelSizeLabel3" for="scales">24"</label>
-                        </div>
-
-                    <!--second row - column 2-->
-                        <div>
-                            <br>
-                            <label class="armRestsCircleLabel" for="scales">armrests (circle)</label>
-                            <br>
-                            <input class="armRestsCircleRadio1" type="radio" id="scales" name="scales" >
-                            <label class="armRestsCircleLabel1" for="scales">full </label>
-
-                            <input class="armRestsCircleRadio2" type="radio" id="scales" name="scales" >
-                            <label class="armRestsCircleLabel2" for="scales">desk</label>
-                        </div>
-
-                    <!--second row - column 3-->
-                        <div>
-                            <br>
-                            <label class="footrestDegreeLabel" for="scales">footrest degree</label>
-
-                            <br>
-                            <input class="footrestDegreeRadio1" type="radio" id="scales" name="scales" >
-                            <label class="footrestDegreeLabel1" for="scales">60 </label>
-
-                            <input class="footrestDegreeRadio2" type="radio" id="scales" name="scales" >
-                            <label class="footrestDegreeLabel2" for="scales">70</label>
-
-                            <input class="footrestDegreeRadio3" type="radio" id="scales" name="scales" >
-                            <label class="footrestDegreeLabel3" for="scales">80 </label>
-
-                            <input class="footrestDegreeRadio4" type="radio" id="scales" name="scales" >
-                            <label class="footrestDegreeLabel4" for="scales">90</label>
-                        </div>
-
-                    <!--second row - column 4-->
-                        <div>
-                            <br>
-                            <label class="brakesLabel" for="scales">brakes</label>
-                            <br>
-                            <input class="brakesRadio1" type="radio" id="scales" name="scales" >
-                            <label class="brakesLabel1" for="scales">push </label>
-
-                            <input class="brakesRadio2" type="radio" id="scales" name="scales" >
-                            <label class="brakesLabel2" for="scales">pull</label>
-                        </div>
-                    <!--Third row-->
-                
-                    <!--Third row - column 1-->
-                        <div>
-                            <br>
-                            <label class="handRimsLabel" for="scales">hand rims (pick one)</label>
-                            <br>
-                            <input class="handRimsRadio1" type="radio" id="scales" name="scales" >
-                            <label class="handRimsLabel1" for="scales">plastic coated</label>
-                            <br>
-                            <input class="handRimsRadio2" type="radio" id="scales" name="scales" >
-                            <label class="handRimsLabel2" for="scales">stainless/ chrome/ alum.</label>
-                        </div>
-
-                    <!--Third row - column 2-->
-                        <div>
-                            <br>
-                            <label class="casterSizeCircleLabel" for="scales">caster size (circle)</label>
-                            <br>
-                            <input class="casterSizeRadio1" type="radio" id="scales" name="scales" >
-                            <label class="casterSizeLabel1" for="scales">4" </label>
-                            
-                            <input class="casterSizeRadio2" type="radio" id="scales" name="scales" >
-                            <label class="casterSizeLabel2" for="scales">5"</label>
-                            
-                            <input class="casterSizeRadio3" type="radio" id="scales" name="scales" >
-                            <label class="casterSizeLabel3" for="scales">6"</label>
-                            
-                            <input class="casterSizeRadio4" type="radio" id="scales" name="scales" >
-                            <label class="casterSizeLabel4" for="scales">7"</label>
-                            
-                            <input class="casterSizeRadio5" type="radio" id="scales" name="scales" >
-                            <label class="casterSizeLabel5" for="scales">8"</label>
-                            
-                            <br>
-                            
-                            <label class="widthCasterSizeLabel" for="scales">width </label>
-                            
-                            <input class="widthCasterSizeRadio1" type="radio" id="scales" name="scales" >
-                            <label class="widthCasterSizeLabel1" for="scales">1" </label>
-                            
-                            <input class="widthCasterSizeRadio2" type="radio" id="scales" name="scales" >
-                            <label class="widthCasterSizeLabel2" for="scales">1.5"</label>
-                            
-                            <input class="widthCasterSizeRadio3" type="radio" id="scales" name="scales" >
-                            <label class="widthCasterSizeLabel3" for="scales">1.75"</label>
-                            
-                            <input class="widthCasterSizeRadio4" type="radio" id="scales" name="scales" >
-                            <label class="widthCasterSizeLabel4" for="scales">2"</label>                  
-                        </div>
-
-                    <!--Third row - column 3-->
-                        <div>
-                            <br>
-                            <label class="foodPlatesLabel" for="scales">foot plates (pick one)</label>
-                            <br>
-                            <input class="foodPlatesRadio1" type="radio" id="scales" name="scales" >
-                            <label class="foodPlatesLabel1" for="scales">composite</label>
-                            <br>
-                            <input class="foodPlatesRadio2" type="radio" id="scales" name="scales" >
-                            <label class="foodPlatesLabel2" for="scales">aluminum</label>
-                        </div>
-
-                    <!--Third row - column 4-->
-                        <div>
-                            <br>
-                            <label class="foodRestsLabel" for="scales">foot rests (pick one)</label>
-                            <br>
-                            <input class="foodRestsRadio1" type="radio" id="scales" name="scales" >
-                            <label class="foodRestsLabel1" for="scales">footrest</label>
-                            <br>
-                            <input class="foodRestsRadio2" type="radio" id="scales" name="scales" >
-                            <label class="foodRestsLabel2" for="scales">elevating legrest</label>
-                            <br>
-                            <input class="foodRestsRadio2" type="radio" id="scales" name="scales" >
-                            <label class="foodRestsLabel2" for="scales">articulating legrest</label>
-                        </div>
-                    
-                    <!--Fourth row - column 1-->
-                        <div>
-                            <br>
-                            <label class="backCanesLabel" for="scales">back canes (pick one)</label>
-                            
-                            <input class="backCanesRadio1" type="radio" id="scales" name="scales" >
-                            <label class="backCanesLabel1" for="scales">straight</label>
-                            
-                            <input class="backCanesRadio2" type="radio" id="scales" name="scales" >
-                            <label class="backCanesLabel2" for="scales">with bend</label>
-                        </div>
-            
-                        
+                        </div>          -->
                 </div>
-    </fieldset>
-        
-        
-        
+    </fieldset>  
     </form>
-    <form>
+
+    <!-- <form>
     <fieldset>
-        <legend>Client measurements/function </legend>
+        <legend>Client measurements/function </legend> -->
         <!-- Client measurements Section    -->
-        <div class="clientMeasurementsGrid">
+        <!-- <div class="clientMeasurementsGrid"> -->
             <!-- Row 1-->
-            <div>
+            <!-- <div>
               <label for="scales">client weight</label>
                 <br>
-                <input type="text" id="patientWeightInput" name="weight">
-            </div>
-            
-            <div>
-              <label for="scales">back of knee to heel</label>
-                <br>
-                <input type="text" id="knee to heel" name="knee to heel">
-            </div>
-            
-            <div>
-              <label for="scales">remember to consider height of cushion and height of favorite shoe </label>
-<!--                <br>-->
-            </div>
-            
-            <div>
-              <label for="scales">font propeller </label>
-                <br>
-                <input type="radio" id="Yes" name="weight">
-                <label for="scales">Yes </label>
-                
-                <input type="radio" id="No" name="weight">
-                <label for="scales">No </label>
-            </div>
-            
-        </div><!-- end of clientMeasurementsGrid  -->
-        </fieldset>
-    </form>
+                <input type="text" id="GOF_patientWeightInput" name="weight">
+            </div> -->
+           
+        <!-- </div>end of clientMeasurementsGrid  -->
+        <!-- </fieldset>
+    </form> -->
     <br>
-        <!-- Options Section    -->
-    <form>
-    <fieldset>
-    <legend>Options - antitippers and auto seatbelt will come with all AADL recycle chairs</legend>
-
-        <div class="optionsGrid">
-            <!-- Row 1-->
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">adjustable tension back</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">armrest - flipback</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">footboard</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">pneumatic castors</label>
-            </div>
-            
-            
-            <!-- Row 2-->
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">adjustable axle plate</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">Aarmrest - single/T arm</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">extra large footplates</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">pneumatic tires</label>
-            </div>
-            
-            <!-- Row 3-->
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">amputee support</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">armrest - wrap around</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">heel loops</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">protection hand rims</label>
-            </div>
-            
-            <!-- Row 4-->
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">angle adjustable foot plates</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">brake extensions</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">omit back upholstery</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">quick release axles</label>
-            </div>
-            
-            <!-- Row 5-->
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">angle adjustable back cares</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">fabric legrest panel</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">O2 holder</label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">recline</label>
-            </div>
-            
-             <!--  Row 6          -->
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">set back angle at --- degrees</label>
-            </div>
-            
-            <div>
-              <label for="dummycell" class="checkbox"> </label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">one arm drive L or R(circle) </label>
-            </div>
-            
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">rigidizer bar </label>
-            </div>
-            
-             <!--  Row 7          -->
-            <div>
-              <input type="checkbox" id="scales" name="scales" class="checkbox">
-              <label for="scales">other</label> 
-            </div>
-            <div><hr>
-              <label for="line"></label> 
-            </div>
-        </div> <!--End of optionsGrid class-->
-        </fieldset>
-    </form>
-        
-<!--
-        <a href="../Dashboard/processingScreen.html">
-      <input type="submit"/>
-    </a>
--->
+        <button id="SaveGOFDataBtn">Save</button>
         <button id="ProcessDataBtn">Submit</button>
         <button id="PrintPageBtn" onclick="window.print()">Print</button>
-
+    </form>
 </body>
 </html>

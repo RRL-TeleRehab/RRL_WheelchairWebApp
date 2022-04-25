@@ -1,6 +1,6 @@
 // Comprehensive Assessment Form Scripts
 
-var pageType;
+var pageType; // Based on this processing screen navigation is handled
 var csaFormArr = [];
 
 document.addEventListener('DOMContentLoaded', ()=>
@@ -50,8 +50,7 @@ function validateForm() {
     
     if(errorMsg != ""){
         alert(errorMsg);
-        //document.getElementById('MessageDialog').value = errorMsg;
-//        window.location.href = "../Dashboard/messageDialog.html";
+
     }
     else{
         isValid = true;
@@ -61,7 +60,7 @@ return isValid;
 
 const submitForm = (ev)=>{
     ev.preventDefault();  //to stop the form submitting default
-    
+    // localStorage.clear();
     //if(validateForm() == true)
     {
         //Set PageType and according load the next page after processing screen
@@ -72,43 +71,39 @@ const submitForm = (ev)=>{
 
         var isTilt;
         if (document.getElementById('tiltInput').checked) {
-          isTilt = true;
+          isTilt = "Yes";
         }else if (document.getElementById('standardInput').checked) {
-          isTilt = false;
+          isTilt = "No";
         }
 
+        var isFootPropulsion;
+        if ((document.getElementById('FootLeftInput').checked) || 
+        (document.getElementById('FootRightInput').checked)) {
+          isFootPropulsion = 1;
+        }else {
+          isFootPropulsion = 0;
+        }
 
         var csaFormData = {
-            // patientWeight:document.getElementById('patientWeightInput').value,
-            // wheelchairType:document.getElementById('wheelchairTypeInput').value = isTilt,
-            // //wheelchairPropulsion:document.getElementById('wheelchairPropulsionInput').value,
-            // chestWidth:document.getElementById('chestWidthInput').value,
-            // hipWidth:document.getElementById('hipWidthInput').value,
-            // seatToLowerLegHeightleft:document.getElementById('seatToLowerLegHeightLeftInput').value,
-            // seatToLowerLegHeightRight:document.getElementById('seatToLowerLegHeightRightInput').value,
-            // buttocksNThighDepthLeft:document.getElementById('buttocksNThighDepthLeftInput').value,
-            // buttocksNThighDepthRight:document.getElementById('buttocksNThighDepthRightInput').value
 
+            patientWeight:document.getElementById('CSA_patientWeightInput').value,
+            hwidth:document.getElementById('hipWidthInput').value,
+            cwidth:document.getElementById('chestWidthInput').value,
+            footpropulsion:isFootPropulsion,
+            btdepth:document.getElementById('buttocksNThighDepthLeftInput').value,
+            lowerleg:document.getElementById('seatToLowerLegHeightLeftInput').value,
+            tilt:isTilt
 
-            // patientWeight:document.getElementById('patientWeightInput').value,
-            // hwidth:document.getElementById('hipWidthInput').value,
-            // cwidth:document.getElementById('chestWidthInput').value,
-            // // footpropulsion:document.getElementById('wheelchairPropulsionInput').value,
-            // footpropulsion:1,
-            // btdepth:document.getElementById('buttocksNThighDepthLeftInput').value,
-            // lowerleg:document.getElementById('seatToLowerLegHeightLeftInput').value
-
-            patientWeight: 290,
-            hwidth : 17,
-            cwidth : 18,
-            footpropulsion : 1,
-            btdepth : 15,
-            lowerleg:10
+            // patientWeight: 290,
+            // hwidth : 18.5,
+            // cwidth : 18,
+            // footpropulsion : 1,
+            // btdepth : 17,
+            // lowerleg:10
 
         }
         csaFormArr.push(csaFormData);
         document.forms[0].reset(); // to clear the form for the next entries
-        //document.querySelector('form').reset();
 
         //saving to localStorage
         localStorage.setItem('CSAFormData', JSON.stringify(csaFormArr) );
@@ -124,13 +119,7 @@ const submitForm = (ev)=>{
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onreadystatechange = function() { // Call a function when the state changes.
       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-          // Request finished. Do processing here.
-          var parametersAPIResponse = xhr.responseText;
-          //localStorage.setItem('parametersAPIResponse', JSON.stringify(parametersAPIResponse) );
-          // localStorage.setItem('parametersAPIResponse', parametersAPIResponse);
-          // windows.localStorage.setItem('parametersAPIResponse', JSON.stringify(parametersAPIResponse) );
-
-
+          // Request finished. Do processing here
           var parameterOutput = {
               "Weight": JSON.parse(xhr.response).Weight,
               "SeatWidth": JSON.parse(xhr.response).SeatWidth,
@@ -149,6 +138,34 @@ const submitForm = (ev)=>{
 
 
 //Generic Order Form Scripts
+//Function for Save Button
+document.addEventListener('DOMContentLoaded', ()=>
+{
+    var el = document.getElementById('SaveGOFsDataBtn');
+    if(el){
+      el.addEventListener('click', processDataFunction);
+    }
+});
+
+//Called when Save button on GOF is clicked
+const saveGOFDataFunction = (ev)=>{
+
+  pageType = "GOF";
+  //saving to localStorage
+  localStorage.setItem('pageType', JSON.stringify(pageType) );
+  
+  //Storing the updated GOF Data which will be required in next page
+  var updatedGofData = {
+    "Weight": document.getElementById('GOF_patientWeightInput').value,
+    "SeatWidth": document.getElementById('seatWidthInput').value,
+    "SeatDepth": document.getElementById('seatDepthInput').value,
+    "RecommendedFSFH": document.getElementById('RFSFHInput').value
+    };
+  localStorage.setItem('updatedGofData',JSON.stringify(updatedGofData) );
+
+}
+
+//Event when submit is click on GOF
 document.addEventListener('DOMContentLoaded', ()=>
 {
     var el = document.getElementById('ProcessDataBtn');
@@ -157,55 +174,37 @@ document.addEventListener('DOMContentLoaded', ()=>
     }
 });
 
-//Function called when Generic order form is loaded, it pulls the information from CSA Form and shows on GOF.
-function retrieveFormInfo(){
-
-    //Set the values on respective IDs in the Generic Order Form. 
-    var arr = JSON.parse( localStorage.getItem('CSAFormData') );
-      document.getElementById('patientWeightInput').value = arr[0].patientWeight;
-    //document.getElementById('wheelchairTypeInput').value = arr[0].wheelchairType;
-    //document.getElementById('wheelchairPropulsionInput').value = arr[0].wheelchairPropulsion;
-    document.getElementById('seatWidthInput').value = arr[0].cwidth;
-    document.getElementById('backHeightInput').value = arr[0].hwidth;
-    document.getElementById('seatToFloorHeightInput').value = arr[0].lowerleg;
-//    document.getElementById('seatToFloorHeightInput').value = arr[0].seatToLowerLegHeightRight;
-    document.getElementById('seatDepthInput').value = arr[0].btdepth;
-//    document.getElementById('seatDepthInput').value = arr[0].buttocksNThighDepthRight;
-
-}
-
 //Function called when Submit button on Generic order form is clicked
 const processDataFunction = (ev)=>{
 
-    pageType = "GFO";
-    //saving to localStorage
-    localStorage.setItem('pageType', JSON.stringify(pageType) );
-    
-    //Navigate to processing screen
-    window.location.href = "../Dashboard/processingScreen.html";
-   
+  pageType = "GOF";
+  //saving to localStorage
+  localStorage.setItem('pageType', JSON.stringify(pageType) );
+  
+  //Navigate to processing screen to goto the Available Models page
+  window.location.href = "../Dashboard/processingScreen.html";
+ 
+}
+//Function called when Generic order form is loaded, it pulls the information from CSA Form and shows on GOF.
+function retrieveFormInfo(){
+//Setting the values on the form after receving from localstorage which was saved from first API call
+    var arr = JSON.parse( localStorage.getItem('parameterOutput') );
+    // alert("Parameter API Response" + "\nWeight " + arr.Weight + "\nWidth "+ arr.SeatWidth + "\nDepth " + arr.SeatDepth + "\nFSFH " + arr.RecommendedFSFH);
+    document.getElementById('GOF_patientWeightInput').value = arr.Weight;
+    document.getElementById('seatWidthInput').value =  arr.SeatWidth;
+    document.getElementById('seatDepthInput').value = arr.SeatDepth;
+    document.getElementById('RFSFHInput').value = arr.RecommendedFSFH;
+
+
+    //Storing the updated GOF Data which will be required in next page
+    var updatedGofData = {
+      "Weight": document.getElementById('GOF_patientWeightInput').value,
+      "SeatWidth": document.getElementById('seatWidthInput').value,
+      "SeatDepth": document.getElementById('seatDepthInput').value,
+      "RecommendedFSFH": document.getElementById('RFSFHInput').value
+      };
+  localStorage.setItem('updatedGofData',JSON.stringify(updatedGofData) );
+
+
 }
 
-
-
-
-
-//sai's Function to connect frontend with backend and read the values for available wheelchair from GOF
-// function loadPersons(personinfo){
-//   var xmlhttp = new XMLHttpRequest();
-//   xmlhttp.open("GET",baseurl,true);
-//   xmlhttp.onreadystatechange = function() {
-//       var persons = JSON.parse(xmlhttp.responseText);
-//       var tbltop = `<table>
-//           <tr><th>Model</th></tr>`;
-//       //main table content we fill from data from the rest call
-//       var main ="";
-//       for (i = 0; i < persons.length; i++){
-//         main += "<tr><td>"+persons[i].Model+"</td></tr>";
-//       }
-//       var tblbottom = "</table>";
-//       var tbl = tbltop + main + tblbottom;
-//       document.getElementById("personinfo").innerHTML = tbl;
-//   };
-//   xmlhttp.send();
-// }
