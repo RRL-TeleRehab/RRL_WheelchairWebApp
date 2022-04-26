@@ -16,7 +16,7 @@
     <body onload="retrieveFormInfo()">  
     <form>
     <fieldset>
-            <legend>preferred make and model (fill in)</legend>
+            <legend>preferred Make </legend>
             <!-- preferred make and model (fill in) -->
                 <div class="preferredMakeandModelGrid">
                     
@@ -30,27 +30,26 @@
     </fieldset>
                 <br>
     <fieldset>
-            <legend>Required features (fill in) will come with urethane castors and tires</legend>
-            <!-- Required features (fill in) will come with urethane castors and tires -->
+            <legend>Required features</legend>
                 <div class="requiredFeaturesCastersTiresGrid">
                 
                     <!--First row-->
                         <div>
                 <label for="scales">client weight</label>
                     <br>
-                    <input type="text" id="GOF_patientWeightInput" name="weight">
+                    <input type="text" id="GOF_patientWeightInput" onchange="updateGOFDataFunction()">
                 </div>
                     <!--First row - column 1-->
                         <div>
-                            <label class="seatWidthLabel" for="scales">seat width (inches) #</label>
+                            <label class="seatWidthLabel" >seat width (inches) #</label>
                             <br>
-                            <input type="text" id="seatWidthInput"  >
+                            <input type="text" id="seatWidthInput" onchange="updateGOFDataFunction()"  >
                         </div>
                     <!--First row - column 2-->
                         <div>
-                            <label class="seatDepthLabel" for="scales">seat depth (inches)</label>
+                            <label class="seatDepthLabel" >seat depth (inches)</label>
                             <br>
-                            <input type="text" id="seatDepthInput"  >
+                            <input type="text" id="seatDepthInput" onchange="updateGOFDataFunction()" >
                         </div>
                 
                     <!--First row - column 3-->
@@ -60,9 +59,9 @@
                             <input type="text" id="backHeightInput"  >
                         </div> -->
                         <div>
-                            <label class="RFSFHtLabel" for="scales">Recommended FSFH</label>
+                            <label class="RFSFHtLabel">Recommended FSFH</label>
                             <br>
-                            <input type="text" id="RFSFHInput"  >
+                            <input type="text" id="RFSFHInput" onchange="updateGOFDataFunction()" >
                         </div>
                 
                     <!--First row - column 4-->
@@ -91,7 +90,6 @@
         <!-- </fieldset>
     </form> -->
     <br>
-        <!-- <button id="SaveGOFDataBtn">Save</button> -->
         <button id="ProcessDataBtn">Submit</button>
         <button id="PrintPageBtn" onclick="window.print()">Print</button>
     </form>

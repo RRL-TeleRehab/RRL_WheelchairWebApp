@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', ()=>
 function validateForm() {
     var isValid = false;
     var errorMsg = "";
-    if(document.getElementById('patientWeightInput').value == ""){
+    if(document.getElementById('CSA_patientWeightInput').value == ""){
       errorMsg += "Please enter the weight \n";
-      document.getElementById('patientWeightInput').style.borderColor = "red";
+      document.getElementById('CSA_patientWeightInput').style.borderColor = "red";
     }
     if(document.getElementById('wheelchairTypeInput').value == ""){
       errorMsg += "Please select a Wheelchair type \n";
@@ -32,25 +32,17 @@ function validateForm() {
       document.getElementById('hipWidthInput').style.borderColor = "red";
     }
     if(document.getElementById('seatToLowerLegHeightLeftInput').value == ""){
-      errorMsg += "Please enter the seat to lower leg height Left \n";
+      errorMsg += "Please enter the seat to lower leg height \n";
       document.getElementById('seatToLowerLegHeightLeftInput').style.borderColor = "red";
     }
-    if(document.getElementById('seatToLowerLegHeightRightInput').value == ""){
-      errorMsg += "Please enter the seat to lower leg height Right \n";
-      document.getElementById('seatToLowerLegHeightRightInput').style.borderColor = "red";
-    }
     if(document.getElementById('buttocksNThighDepthLeftInput').value == ""){
-      errorMsg += "Please enter the buttocks and Thigh Depth Left \n";
+      errorMsg += "Please enter the buttocks and Thigh Depth \n";
       document.getElementById('buttocksNThighDepthLeftInput').style.borderColor = "red";
     }
-    if(document.getElementById('buttocksNThighDepthRightInput').value == ""){
-      errorMsg += "Please enter the buttocks and Thigh Depth Right \n";
-      document.getElementById('buttocksNThighDepthRightInput').style.borderColor = "red";
-    }
+    
     
     if(errorMsg != ""){
         alert(errorMsg);
-
     }
     else{
         isValid = true;
@@ -61,7 +53,7 @@ return isValid;
 const submitForm = (ev)=>{
     ev.preventDefault();  //to stop the form submitting default
     // localStorage.clear();
-    //if(validateForm() == true)
+    if(validateForm() == true)
     {
         //Set PageType and according load the next page after processing screen
         pageType = "CSA";
@@ -93,19 +85,11 @@ const submitForm = (ev)=>{
             btdepth:document.getElementById('buttocksNThighDepthLeftInput').value,
             lowerleg:document.getElementById('seatToLowerLegHeightLeftInput').value,
             tilt:isTilt
-
-            // patientWeight: 290,
-            // hwidth : 18.5,
-            // cwidth : 18,
-            // footpropulsion : 1,
-            // btdepth : 17,
-            // lowerleg:10
-
         }
         csaFormArr.push(csaFormData);
         document.forms[0].reset(); // to clear the form for the next entries
 
-        //saving to localStorage
+        //saving CSAFormData to localStorage
         localStorage.setItem('CSAFormData', JSON.stringify(csaFormArr) );
     }
 
@@ -128,9 +112,8 @@ const submitForm = (ev)=>{
               };
           localStorage.setItem('parameterOutput',JSON.stringify(parameterOutput) );
  
-          //Navigating to Generic Order Form
+          //Navigating to Generic Order Form through processing screen
           window.location.href = "../Dashboard/processingScreen.html";
-
       }
     }
     xhr.send(params);  
@@ -138,28 +121,30 @@ const submitForm = (ev)=>{
 
 
 //Generic Order Form Scripts
-//Function for Save Button
-document.addEventListener('DOMContentLoaded', ()=>
-{
-    var el = document.getElementById('SaveGOFsDataBtn');
-    if(el){
-      el.addEventListener('click', processDataFunction);
-    }
-});
 
-//Called when Save button on GOF is clicked
-const saveGOFDataFunction = (ev)=>{
+//Called whenever change happens in input fields on GOF
+function updateGOFDataFunction(){
 
   pageType = "GOF";
-  //saving to localStorage
+  //saving pageType to localStorage
   localStorage.setItem('pageType', JSON.stringify(pageType) );
   
-  //Storing the updated GOF Data which will be required in next page
+  var updatedWt = document.getElementById('GOF_patientWeightInput').value;
+  var updatedSWidth = document.getElementById('seatWidthInput').value;
+  var updatedSDepth = document.getElementById('seatDepthInput').value;
+  var updatedRFSFH = document.getElementById('RFSFHInput').value;
+
+  console.log("updatedWt "  + updatedWt);
+  console.log("updatedSWidth " + updatedSWidth);
+  console.log("updatedSDepth " + updatedSDepth);
+  console.log("updatedRFSFH " + updatedRFSFH);
+
+  //Storing the updated GOF Data which will be required in next Models page
   var updatedGofData = {
-    "Weight": document.getElementById('GOF_patientWeightInput').value,
-    "SeatWidth": document.getElementById('seatWidthInput').value,
-    "SeatDepth": document.getElementById('seatDepthInput').value,
-    "RecommendedFSFH": document.getElementById('RFSFHInput').value
+    "Weight": updatedWt,
+    "SeatWidth": updatedSWidth,
+    "SeatDepth": updatedSDepth,
+    "RecommendedFSFH": updatedRFSFH
     };
   localStorage.setItem('updatedGofData',JSON.stringify(updatedGofData) );
 
@@ -178,7 +163,7 @@ document.addEventListener('DOMContentLoaded', ()=>
 const processDataFunction = (ev)=>{
 
   pageType = "GOF";
-  //saving to localStorage
+  //saving pageType to localStorage
   localStorage.setItem('pageType', JSON.stringify(pageType) );
   
   //Navigate to processing screen to goto the Available Models page
@@ -189,12 +174,10 @@ const processDataFunction = (ev)=>{
 function retrieveFormInfo(){
 //Setting the values on the form after receving from localstorage which was saved from first API call
     var arr = JSON.parse( localStorage.getItem('parameterOutput') );
-    // alert("Parameter API Response" + "\nWeight " + arr.Weight + "\nWidth "+ arr.SeatWidth + "\nDepth " + arr.SeatDepth + "\nFSFH " + arr.RecommendedFSFH);
     document.getElementById('GOF_patientWeightInput').value = arr.Weight;
     document.getElementById('seatWidthInput').value =  arr.SeatWidth;
     document.getElementById('seatDepthInput').value = arr.SeatDepth;
     document.getElementById('RFSFHInput').value = arr.RecommendedFSFH;
-
 
     //Storing the updated GOF Data which will be required in next page
     var updatedGofData = {
@@ -203,8 +186,8 @@ function retrieveFormInfo(){
       "SeatDepth": document.getElementById('seatDepthInput').value,
       "RecommendedFSFH": document.getElementById('RFSFHInput').value
       };
-  localStorage.setItem('updatedGofData',JSON.stringify(updatedGofData) );
-
+  
+    //Saving the already present values in localStorage
+    localStorage.setItem('updatedGofData',JSON.stringify(updatedGofData) );
 
 }
-

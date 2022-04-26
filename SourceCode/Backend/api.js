@@ -83,17 +83,14 @@ router.use((request,response,next)=>{
   variables.col.set("29.5", "AP");
   variables.col.set("30", "AQ");
 
-
     next();
  })
 
  router.route('/getChairs').post((request,response,next)=>{
-    console.log(variables.tilt);
+    //console.log(variables.tilt);
     dboperations.showWheelchairs(request.body.Weight, request.body.SeatWidth, request.body.SeatDepth, variables.tilt).then(result => {
        response.json(result);
     })
-
-
 })
 
 router.route('/parameters').post((request,response)=>{
