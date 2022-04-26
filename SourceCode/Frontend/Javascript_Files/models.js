@@ -57,12 +57,10 @@ function getWheelchairModels(containerDiv){
               iframe.setAttribute("class", "MoveClass");
               var _button = document.createElement("button");
               _button.innerHTML = 'Move-Front';
-              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Front.PNG";
               wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveFrontTbl.html";
               document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
               _button.onclick = function()
               {
-                  // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Front.PNG";
                   wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveFrontTbl.html";
                   document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
               }
@@ -70,7 +68,6 @@ function getWheelchairModels(containerDiv){
               _button2.innerHTML = 'Move-Rear';
               _button2.onclick = function()
               {
-                // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/Move_Rear.PNG";
                 wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/MoveRearTbl.html";
                 document.getElementsByClassName("MoveClass")[0].src = wheelSizeImgPath;
               }
@@ -81,7 +78,6 @@ function getWheelchairModels(containerDiv){
             if(modelName.includes("Orion"))
             {
               iframe.setAttribute("class", "OrionClass");
-              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/OnionII.PNG";
               wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/Orion2Tbl.html";
               document.getElementsByClassName("OrionClass")[0].src = wheelSizeImgPath;
 
@@ -89,7 +85,6 @@ function getWheelchairModels(containerDiv){
             if(modelName.includes("Catalyst"))
             {
               iframe.setAttribute("class", "CatalystClass");
-              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/M6Quickie.PNG";
               wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/M6QuickieTbl.html";
               document.getElementsByClassName("CatalystClass")[0].src = wheelSizeImgPath;
 
@@ -98,7 +93,6 @@ function getWheelchairModels(containerDiv){
             {
               //SuperTilt is MapleLeaf(MLW)
               iframe.setAttribute("class", "MLWClass");
-              // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/SuperTilt.PNG";
               wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/SuperTiltTbl.html";
               document.getElementsByClassName("MLWClass")[0].src = wheelSizeImgPath;
 
@@ -107,7 +101,6 @@ function getWheelchairModels(containerDiv){
             
               _button.onclick = function()
               {
-                // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/SuperTilt.PNG";
                 wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/SuperTiltTbl.html";
                 document.getElementsByClassName("MLWClass")[0].src = wheelSizeImgPath;
               }
@@ -115,13 +108,19 @@ function getWheelchairModels(containerDiv){
               _button2.innerHTML = 'LowRiderSuperTilt';
               _button2.onclick = function()
               {
-                  // wheelSizeImgPath = "../Wheelchair_Size_Tbl_Images/LowRiderSuperTilt.PNG";
                   wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/LowRideSuperTiltTbl.html";
                   document.getElementsByClassName("MLWClass")[0].src = wheelSizeImgPath;
               }
 
               modelDiv.appendChild(_button);
               modelDiv.appendChild(_button2);
+            }
+            if(modelName.includes("Quickie"))
+            {
+              iframe.setAttribute("class", "QuickieClass");
+              wheelSizeImgPath = "../Wheelchair_Size_Html_Tables/M6QuickieTbl.html";
+              document.getElementsByClassName("QuickieClass")[0].src = wheelSizeImgPath;
+
             }
 
             // document.getElementById(iframeId).src = wheelSizeImgPath;
