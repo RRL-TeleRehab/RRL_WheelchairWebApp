@@ -334,6 +334,14 @@ function getWheelchairModels(containerDiv){
           row8data2Input.type = 'text';
           row8data2Input.id = 'row8data2Input' + index; // need unique Ids!
           row8data2.appendChild(row8data2Input);
+
+          //Dummy blank line
+          const row9 = document.createElement("br");
+          row9.setAttribute("class", "content");
+          var row9Id = "row9"+"_"+index;
+          row9.setAttribute("id", row9Id);
+          document.getElementById(detailsTblId).appendChild(row9);
+
           
     }// End of For Loop
     //Function for expand Collapse feature

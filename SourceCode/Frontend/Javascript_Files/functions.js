@@ -20,7 +20,7 @@ function validateForm() {
       document.getElementById('CSA_patientWeightInput').style.borderColor = "red";
     }
     if(document.getElementById('wheelchairTypeInput').value == ""){
-      errorMsg += "Please select a Wheelchair type \n";
+      errorMsg += "Please select a wheelchair type \n";
       document.getElementById('wheelchairTypeInput').style.borderColor = "red";
     }
     if(document.getElementById('chestWidthInput').value == ""){
@@ -36,7 +36,7 @@ function validateForm() {
       document.getElementById('seatToLowerLegHeightLeftInput').style.borderColor = "red";
     }
     if(document.getElementById('buttocksNThighDepthLeftInput').value == ""){
-      errorMsg += "Please enter the buttocks and Thigh Depth \n";
+      errorMsg += "Please enter the buttocks and thigh depth \n";
       document.getElementById('buttocksNThighDepthLeftInput').style.borderColor = "red";
     }
     
