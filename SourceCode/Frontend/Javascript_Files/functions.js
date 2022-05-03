@@ -53,6 +53,8 @@ return isValid;
 const submitForm = (ev)=>{
     ev.preventDefault();  //to stop the form submitting default
     // localStorage.clear();
+
+    var submitBtnClicked = true;
     if(validateForm() == true)
     {
         //Set PageType and according load the next page after processing screen
@@ -114,6 +116,12 @@ const submitForm = (ev)=>{
  
           //Navigating to Generic Order Form through processing screen
           window.location.href = "../Dashboard/processingScreen.html";
+      }
+      //In case of invalid input
+       if (this.status === 500 && submitBtnClicked) {
+          submitBtnClicked = false;
+          alert("Invalid values entered, Please enter the valid values.");
+          location.reload();
       }
     }
     xhr.send(params);  
