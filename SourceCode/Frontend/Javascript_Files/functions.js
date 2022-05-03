@@ -89,7 +89,7 @@ const submitForm = (ev)=>{
             tilt:isTilt
         }
         csaFormArr.push(csaFormData);
-        document.forms[0].reset(); // to clear the form for the next entries
+        //document.forms[0].reset(); // to clear the form for the next entries
 
         //saving CSAFormData to localStorage
         localStorage.setItem('CSAFormData', JSON.stringify(csaFormArr) );
@@ -118,10 +118,29 @@ const submitForm = (ev)=>{
           window.location.href = "../Dashboard/processingScreen.html";
       }
       //In case of invalid input
+      var errorMsg = "";
        if (this.status === 500 && submitBtnClicked) {
           submitBtnClicked = false;
-          alert("Invalid values entered, Please enter the valid values.");
-          location.reload();
+
+          if((document.getElementById('chestWidthInput').value < 8) || 
+          (document.getElementById('chestWidthInput').value > 18.5)){
+            errorMsg += "Please enter the chest width between 8 and 18.5 \n";
+            document.getElementById('chestWidthInput').style.borderColor = "red";
+          }
+          if((document.getElementById('hipWidthInput').value < 10) || 
+          (document.getElementById('hipWidthInput').value > 30)){
+            errorMsg += "Please enter the hip width between 10 and 30 \n";
+            document.getElementById('hipWidthInput').style.borderColor = "red";
+          }
+          if((document.getElementById('buttocksNThighDepthLeftInput').value < 14) || 
+          (document.getElementById('buttocksNThighDepthLeftInput').value > 24)){
+            errorMsg += "Please enter the buttocks and thigh depth between 14 and 24 \n";
+            document.getElementById('buttocksNThighDepthLeftInput').style.borderColor = "red";
+          }
+
+          if(errorMsg != ""){
+            alert(errorMsg + "and submit again.");
+          }
       }
     }
     xhr.send(params);  
